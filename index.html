@@ -15,7 +15,7 @@
       <li><a href="#story">Our Story</a></li>
       <li><a href="#schedule">Schedule</a></li>
       <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#faq">Faq</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="#rsvp">RSVP</a></li>
     </ul>
   </nav>
@@ -60,7 +60,33 @@
     <img src="./Images/image0.jpeg" alt="ugonna & chuka">
     <img src="./Images/image1.jpeg" alt="ugonna & chuka">
     <img src="./Images/image2.jpeg" alt="Bride">
+    <img src="./Images/Image3.JPG" alt="couple">
+    <img src="./Images/Image4.JPG" alt="couple">
+    <img src="./Images/Image5.JPG" alt="couple">
   </div>
+
+  <div class="video-container">
+    <video class="video" src="./Video/chuka prewedding final edit.MP4" muted></video>
+    
+    <div class="video-controls">
+      <div class="progress-area">
+        <div class="progress-bar"></div>
+      </div>
+      
+      <div class="buttons-container">
+        <div class="left-controls">
+          <button class="play-pause-btn">▶</button>
+          <button class="mute-btn">🔇</button>
+          <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="0">
+        </div>
+        
+        <div class="right-controls">
+          <button class="fullscreen-btn">⛶</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <section id = "faq" class="faq-section">
@@ -73,7 +99,7 @@
   <h2>Gifts & Support</h2>
   
   <p class="italic">
-    Our preference is for it to be monetized. Please send to FIRSTBANK 3111392798
+    Our preference is for it to be monetized. Please send to FIRSTBANK 3111392798, Sandra Emerum
   </p>
   
   <p class="italic">
@@ -97,11 +123,14 @@
   <p>#ChUgo</p>
   </div>
   
-  <!--<div class="faq-card">
-  <h2>Parking Availability</h2>
+  <div class="faq-card">
+  <h2>Direction</h2>
   
-  <p>FREE! parking is available at the venue</p>
-  </div>!-->
+  <p>Travel from Onitsha until you reach Awo Junction. Upon arrival at the junction, hire a motorcycle to take you to Bright Emerum's compound, located past Dr. Duru's residence.
+  </p>
+  <p>Travel from Owerri toward Awo Junction. Once you arrive at the junction, take a motorcycle to the Emerum compound, which is located just past Dr. Duru's residence.</p>
+  <p><a href="https://maps.app.goo.gl/UiXnmpLZXxzxGC3a7?g_st=ic" target="_blank">Get Directions to Isieke AwoOmamma</a></p>
+  </div>
   
   <div class="faq-card">
   <h2>When is the RSVP deadline?</h2>
@@ -178,6 +207,7 @@
   <p>Made with ❤️ for Ugonna & Chuka</p>
 </footer>
 
+
 <script>
   const form = document.getElementById('rsvpForm');
   const successMsg = document.getElementById('successMessage');
@@ -194,6 +224,76 @@
 
 <script src="script.js"></script>
 
+<script>
+  // Wait until the DOM is fully loaded
+  document.addEventListener("DOMContentLoaded", () => {
+    const video = document.querySelector('.video');
+    const playPauseBtn = document.querySelector('.play-pause-btn');
+    const muteBtn = document.querySelector('.mute-btn');
+    const volumeSlider = document.querySelector('.volume-slider');
+    const progressBar = document.querySelector('.progress-bar');
+    const progressArea = document.querySelector('.progress-area');
+    const fullscreenBtn = document.querySelector('.fullscreen-btn');
+
+    // Play & Pause Logic
+    playPauseBtn.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+        playPauseBtn.textContent = '⏸';
+      } else {
+        video.pause();
+        playPauseBtn.textContent = '▶';
+      }
+    });
+
+    // Update Timeline Progress
+    video.addEventListener('timeupdate', () => {
+      const percentage = (video.currentTime / video.duration) * 100;
+      progressBar.style.width = `${percentage}%`;
+    });
+
+    // Click on Timeline to Scrub
+    progressArea.addEventListener('click', (e) => {
+      const timelineWidth = progressArea.clientWidth;
+      video.currentTime = (e.offsetX / timelineWidth) * video.duration;
+    });
+
+    // Volume Slider
+    volumeSlider.addEventListener('input', (e) => {
+      video.volume = e.target.value;
+      if (video.volume === 0) {
+        muteBtn.textContent = '🔇';
+        video.muted = true;
+      } else {
+        muteBtn.textContent = '🔊';
+        video.muted = false;
+      }
+    });
+
+    // Mute/Unmute Button
+    muteBtn.addEventListener('click', () => {
+      video.muted = !video.muted;
+      if (video.muted) {
+        muteBtn.textContent = '🔇';
+        volumeSlider.value = 0;
+      } else {
+        muteBtn.textContent = '🔊';
+        volumeSlider.value = video.volume || 0.5;
+      }
+    });
+
+    // Fullscreen Toggle
+    fullscreenBtn.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        document.querySelector('.video-container').requestFullscreen().catch(err => {
+          console.log("Error attempting to enable full-screen mode:", err.message);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    });
+  });
+</script>
 
 
 </body>
