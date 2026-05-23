@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ugonna & Chuka Wedding</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header class="hero">
+  <nav>
+    <h1 class="couple">Ugonna & Chuka</h1>
+    <ul>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#faq">Faq</a></li>
+      <li><a href="#rsvp">RSVP</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-content">
+    <h2>We're Getting Married</h2>
+    <p>December 31st, 2026 • Owerri / Awo Omamma, Imo State Nigeria</p>
+    <div id="countdown"></div>
+  </div>
+</header>
+
+<section id="story" class="section">
+  <h2>Our Story</h2>
+  <p>
+    Ours is a story of quiet effort, undeniable connection, and fierce dedication. From the very moment our eyes first met, we felt a spark that changed everything. Every second spent by each other’s side is a treasure deeply cherished, and we find ourselves looking forward to our forever. A forever overflowing with pure happiness, laughter, and a love that only grows sweeter.
+  </p>
+</section>
+
+<section id="schedule" class="section dark">
+  <h2>Wedding Schedule</h2>
+
+  <div class="card">
+    <h3>Traditional Wedding</h3>
+    <p>03:00 PM • Chief Barr. Donatus Bright Emerum's Compound, Isieke Awo Omamma, Imo State, Nigeria</p>
+  </div>
+
+  <div class="card">
+    <h3>White Wedding</h3>
+    <p>09:00 AM • Holy Cross Catholic Church Aladinma, Owerri Imo State, Nigeria</p>
+  </div>
+
+  <!--<div class="card">
+    <h3>Reception</h3>
+    <p>3:00 PM • Grand Ballroom</p>!-->
+  </div>
+</section>
+
+<section id="gallery" class="section">
+  <h2>Gallery</h2>
+
+  <div class="gallery">
+    <img src="./Images/image0.jpeg" alt="ugonna & chuka">
+    <img src="./Images/image1.jpeg" alt="ugonna & chuka">
+    <img src="./Images/image2.jpeg" alt="Bride">
+  </div>
+</section>
+
+<section id = "faq" class="faq-section">
+
+  <h1 class="section-title">Questions or Inquiries</h1>
+  
+  <div class="brush-line"></div>
+  
+  <div class="faq-card">
+  <h2>Gifts & Support</h2>
+  
+  <p class="italic">
+    Our preference is for it to be monetized. Please send to FIRSTBANK 3111392798
+  </p>
+  
+  <p class="italic">
+  Feedback: brightdebeauty@gmail.com
+  </p>
+  
+  <p class="italic">
+  Sending love and thanks.
+  </p>
+  </div>
+  
+  <div class="faq-card">
+  <h2>Colors of the day</h2>
+  
+  <p>Burgundy + Dusty Blue + Dusty Rose</p>
+  </div>
+  
+  <div class="faq-card">
+  <h2>Our Hashtag</h2>
+  
+  <p>#ChUgo</p>
+  </div>
+  
+  <!--<div class="faq-card">
+  <h2>Parking Availability</h2>
+  
+  <p>FREE! parking is available at the venue</p>
+  </div>!-->
+  
+  <div class="faq-card">
+  <h2>When is the RSVP deadline?</h2>
+  
+  <p>Please RSVP before September 30th, 2026.</p>
+  </div>
+  
+  </section>
+  
+  <div id="rsvp" class="rsvp-container">
+    <h1>RSVP</h1>
+    
+    <form id="rsvpForm" action="https://formspree.io/f/xqejbjkn" method="POST">
+    <div class="form-group">
+    <label for="name">Full Name</label>
+    <input type="text" name="name" id="name" required>
+    </div>
+    
+    <div class="form-group">
+    <label for="email">Email Address</label>
+    <input type="email" name="email" id="email" required>
+    </div>
+    
+    <div class="form-group">
+    <label for="attend">Will you attend?</label>
+    <select name="attending" id="attend" required>
+    <option value="">Select option</option>
+    <option value="Yes">Yes, I'll be there</option>
+    <option value="No">No, I can't make it</option>
+    <option value="Maybe">Maybe</option>
+    </select>
+    </div>
+    
+    <div class="form-group">
+    <label for="message">Message (optional)</label>
+    <textarea name="message" id="message" rows="4"></textarea>
+    </div>
+    
+    <button type="submit" class="btn">Send RSVP</button>
+    </form>
+    
+    <div id="successMessage" class="success">
+    Thank you! Your RSVP has been received.
+    </div>
+    
+    <div id="errorMessage" class="error">
+    Something went wrong. Please try again.
+    </div>
+    </div>
+
+
+<!--<section id="rsvp" class="section dark">
+  <h2>RSVP</h2>
+
+  <form id="rsvpForm">
+    <input type="text" placeholder="Full Name" required>
+    <input type="email" placeholder="Email Address" required>
+
+    <select required>
+      <option value="">Will you attend?</option>
+      <option>Yes, I will be there</option>
+      <option>Sorry, I can't make it</option>
+    </select>
+
+    <textarea placeholder="Message"></textarea>
+
+    <button type="submit">Send RSVP</button>
+  </form>
+
+  <p id="successMessage"></p>
+</section>!-->
+
+<footer>
+  <p>Made with ❤️ for Ugonna & Chuka</p>
+</footer>
+
+<script>
+  const form = document.getElementById('rsvpForm');
+  const successMsg = document.getElementById('successMessage');
+  const errorMsg = document.getElementById('errorMessage');
+  
+  form.addEventListener('submit', async (e) => {
+  // No need to call e.preventDefault() because Formspree handles it
+  
+  // Optional: You can add client-side validation or extra fields here
+  successMsg.style.display = 'block';
+  form.style.display = 'none';
+  });
+  </script>
+
+<script src="script.js"></script>
+
+
+
+</body>
+</html>
